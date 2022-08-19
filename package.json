@@ -10,16 +10,12 @@
   "repository": "https://github.com/suchagunner/TIL.git/til",
   "scripts": {
     "start": "vuepress dev src",
-    "build": "vuepress build src"
+    "build": "vuepress build src",
+    "deploy": "vuepress build src && gh-pages -d public -b main"
   },
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/plugin-toc": "^2.0.0-beta.49",
-    "@vuepress/theme-default": "^1.9.7",
-    "directory-tree": "^3.3.0",
-    "vue": "2.7.9",
     "vuepress": "^1.5.3",
-    "vuepress-plugin-disqus": "^0.2.0",
     "vuepress-plugin-sitemap": "^2.3.1"
   }
 }
