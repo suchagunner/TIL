@@ -60,7 +60,7 @@ module.exports = {
         collapsable: false,
         children: [
           '/docs/react/',
-          '/docs/react/idea-of-react'
+          '/docs/react/react-portal'
         ]
       },
       {
