@@ -11,10 +11,11 @@
   "scripts": {
     "start": "vuepress dev src",
     "build": "vuepress build src",
-    "deploy": "vuepress build src && gh-pages -d public -b main"
+    "deploy": "vuepress build src && gh-pages -d src/.vuepress/dist -b main"
   },
   "license": "MIT",
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "vuepress": "^1.5.3",
     "vuepress-plugin-sitemap": "^2.3.1"
   }

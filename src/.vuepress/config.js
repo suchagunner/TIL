@@ -14,6 +14,7 @@ module.exports = {
    *
    * ref：https://v1.vuepress.vuejs.org/config/#head
    */
+
   head: [
     ['meta', { name: 'theme-color', content: '5f0080' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -25,6 +26,8 @@ module.exports = {
    *
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
+
+  base: '/TIL/',
   themeConfig: {
     repo: '',
     editLinks: false,
