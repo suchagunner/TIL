@@ -1,4 +1,7 @@
-const {getArticles} = require("./utils");
+const {DocManager} = require("./utils");
+const path = require('path');
+const docManager = new DocManager(path.join(__dirname, '../docs'))
+
 module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
@@ -54,32 +57,7 @@ module.exports = {
             '/docs/why'
         ]
       },
-      {
-        title: 'Typescript',
-        path: '/docs/typescript',
-        collapsable: false,
-        children: [
-          // '/docs/typescript/',
-          '/docs/typescript/naming-convention.md'
-        ]
-      },
-      {
-        title: 'React',
-        path: '/docs/react',
-        collapsable: false,
-        children: [
-          '/docs/react/',
-          '/docs/react/react-portal'
-        ]
-      },
-      {
-        title: 'Vue',
-        path: '/docs/vue',
-        collapsable: false,
-        children: [
-          '/docs/vue/',
-        ]
-      }
+      ...docManager.getSidebarItems()
     ]
   },
 

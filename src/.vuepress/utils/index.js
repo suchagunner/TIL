@@ -1,22 +1,40 @@
-// var dirTree = require('directory-tree')
-// var path = require('path')
-//
-// let util = module.exports = {
-//     getFiles: (name)=>{
-//         var files = []
-//         dirTree(path.join(__dirname, '../'+name), {extensions:/\.md/}, (item, PATH) => files.push(item));
-//         return files
-//     },
-//     getArticles: (name, except)=>{
-//         let articles = []
-//         var root_dirname = path.join(__dirname, '../')
-//         var files = util.getFiles(name)
-//         files.forEach((item)=>{
-//             if(except !== undefined && item.path.includes(except)) return
-//             articles.push(item.path.replace(root_dirname, '/').replace('.md', '').replace('README', ''));
-//         })
-//         return articles
-//     }
-// }
-//
-// // @TODO 직접 작성 필요
+const fs = require('fs');
+const path = require('path');
+
+class DocManager {
+  #rootDir;
+
+  constructor(rootDocDir) {
+    this.#rootDir = rootDocDir;
+  }
+
+  #getGroupItem(folderName) {
+    const groupTitle = `${folderName[0].toUpperCase()}${folderName.slice(1)}`;
+    const groupPath = `/docs/${folderName}`;
+    const collapsable = false;
+    const children = fs
+      .readdirSync(`${path.join(this.#rootDir, folderName)}`)
+      .filter((file) => file.slice(-3) === '.md')
+      .map((file) => `${groupPath}/${file === 'README.md' ? '' : file.slice(0, -3)}`);
+
+    return {
+      title: groupTitle,
+      path: groupPath,
+      collapsable,
+      children,
+    };
+  }
+
+  getSidebarItems() {
+    return fs
+      .readdirSync(this.#rootDir)
+      .filter((f) => {
+        return fs.lstatSync(`${this.#rootDir}/${f}`).isDirectory();
+      })
+      .map((folder) => this.#getGroupItem(folder));
+  }
+}
+
+module.exports = {
+  DocManager,
+};
