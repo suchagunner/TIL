@@ -11,7 +11,7 @@
 
 ## Use Case
 # 구현부
-```
+```JS
 import {createContext, PropsWithChildren, useState} from "react";
 import {createPortal} from "react-dom";
 
@@ -52,7 +52,7 @@ export default (() => ({
 위 코드는 GlobalPortal 컴포넌트를 Context API를 사용해서 구현해봤다. GlobalPortal를 설치할 곳에 GlobalPortal.Provider 을 
 생성하고 자식으로 children을 받는다. 또한 모달 등의 실제 *컨텐트*를 받을 컨테이너 dom을 `global-portal-container`의 `id`를 갖는 `div`로
 생성했다.
-```
+```JS
 // Page
 import {PropsWithChildren, useMemo, useState} from "react";
 import GlobalPortal from "./GlobalPortal";
