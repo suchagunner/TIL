@@ -55,6 +55,15 @@ module.exports = {
         ]
       },
       {
+        title: 'Typescript',
+        path: '/docs/typescript',
+        collapsable: false,
+        children: [
+          // '/docs/typescript/',
+          '/docs/typescript/naming-convention.md'
+        ]
+      },
+      {
         title: 'React',
         path: '/docs/react',
         collapsable: false,
